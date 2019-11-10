@@ -21,7 +21,7 @@ mongoose.connect( process.env.URLDB, {
 app.use( bodyParser.urlencoded( { extended: false } ) );
 app.use( bodyParser.json() );
 //import rutas
-app.use( require( './routes/usuarios' ) );
+app.use( require( './routes/index' ) );
 
 app.listen( process.env.PORT, () => {
     console.log( `Listen on port ${ process.env.PORT }` );
