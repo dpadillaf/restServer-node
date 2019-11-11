@@ -12,7 +12,9 @@ app.get( '/categoria', verificaToken, ( req, res ) => {
     let limite = req.query.limite || 5;
     limite = Number( limite );
     
-    Categoria.find( {}, 'descripcion usuario' )
+    Categoria.find( {} )
+            .sort( 'descripcion' )  //ordena por descripcion
+            .populate( 'usuario', 'nombre email' ) //filtra por usuario y trae nombre, email de usuario
             .skip( desde )
             .limit( limite )
             .exec( ( err, categorias ) => {
